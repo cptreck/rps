@@ -22,11 +22,11 @@ function getPlayerChoice () {
 }
 
 function playRound(playerChoice, computerChoice) {
-    playerChoice = getPlayerChoice();
     computerChoice = getComputerChoice();
-
+    playerChoice = getPlayerChoice();
+    
     if (playerChoice === computerChoice) {
-        return "It's a tie!";
+        return playRound();
     } 
 
     if (playerChoice === "rock" && computerChoice === "paper") {
@@ -48,4 +48,21 @@ function playRound(playerChoice, computerChoice) {
     }
 }
 
-console.log(playRound());
+function game () {
+    playerScore = 0;
+    computerScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+        if (playRound() === "You win!") {
+            playerScore++;
+        } else { 
+            computerScore++;
+        }
+    }
+
+    if (playerScore > computerScore) {
+        return "You win the game with " + playerScore + " points!";
+    }
+}
+
+console.log(game());
