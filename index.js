@@ -4,16 +4,48 @@ function getComputerChoice() {
 
     switch (randomNumber) {
         case 3:
-            choice = "Rock";
+            choice = "rock";
             break;
         case 2:
-            choice = "Paper";
+            choice = "paper";
             break;
         case 1:
-            choice = "Scissors";  
+            choice = "scissors";  
             break;      
     }
     return choice;
 }
 
-console.log(getComputerChoice());
+function getPlayerChoice () {
+    let choice = prompt("Choose Rock, Paper, or Scissors.");
+    return choice.toLowerCase();
+}
+
+function playRound(playerChoice, computerChoice) {
+    playerChoice = getPlayerChoice();
+    computerChoice = getComputerChoice();
+
+    if (playerChoice === computerChoice) {
+        return "It's a tie!";
+    } 
+
+    if (playerChoice === "rock" && computerChoice === "paper") {
+            return "You lose!";
+    } else if (playerChoice === "rock" && computerChoice === "scissors") {
+            return "You win!";
+    } else if (playerChoice === "paper" && computerChoice === "rock") {
+            return "You win!";
+    } else if (playerChoice === "paper" && computerChoice === "scissors") {
+            return "You lose!";
+    } else if (playerChoice === "scissors" && computerChoice === "paper") {
+            return "You win!";
+    } else if (playerChoice === "scissors" && computerChoice === "rock") {
+            return "You lose!";
+    }
+
+    if (playerChoice != "rock" || playerChoice != "scissors" || playerChoice != "paper") {
+        return "You lose!"
+    }
+}
+
+console.log(playRound());
