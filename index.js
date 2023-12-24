@@ -48,7 +48,7 @@ function playRound(playerChoice, computerChoice) {
     }
 }
 
-function game () {
+/* function game () {
     playerScore = 0;
     computerScore = 0;
 
@@ -65,4 +65,4 @@ function game () {
     }
 }
 
-console.log(game());
+console.log(game()); */
