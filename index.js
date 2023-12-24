@@ -1,3 +1,13 @@
+const buttons = document.querySelectorAll('button');
+let choice;
+buttons.forEach((button) => {
+
+  button.addEventListener('click', () => {
+    choice = button.id;
+    console.log(playRound());
+  });
+});
+
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * (4 - 1) + 1);
     let choice = "";
@@ -13,12 +23,12 @@ function getComputerChoice() {
             choice = "scissors";  
             break;      
     }
+    console.log(choice);
     return choice;
 }
 
 function getPlayerChoice () {
-    let choice = prompt("Choose Rock, Paper, or Scissors.");
-    return choice.toLowerCase();
+    return choice;
 }
 
 function playRound(playerChoice, computerChoice) {
@@ -47,6 +57,8 @@ function playRound(playerChoice, computerChoice) {
         return "You lose!"
     }
 }
+
+
 
 /* function game () {
     playerScore = 0;
