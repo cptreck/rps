@@ -1,12 +1,14 @@
 const buttons = document.querySelectorAll('button');
-let choice;
-buttons.forEach((button) => {
+let pChoice;
+/* buttons.forEach((button) => {
 
   button.addEventListener('click', () => {
-    choice = button.id;
+    pChoice = button.id;
     console.log(playRound());
+    
   });
-});
+}); */
+
 
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * (4 - 1) + 1);
@@ -23,12 +25,12 @@ function getComputerChoice() {
             choice = "scissors";  
             break;      
     }
-    console.log(choice);
+    
     return choice;
 }
 
 function getPlayerChoice () {
-    return choice;
+    return pChoice;
 }
 
 function playRound(playerChoice, computerChoice) {
@@ -36,7 +38,7 @@ function playRound(playerChoice, computerChoice) {
     playerChoice = getPlayerChoice();
     
     if (playerChoice === computerChoice) {
-        return playRound();
+        return;
     } 
 
     if (playerChoice === "rock" && computerChoice === "paper") {
@@ -60,21 +62,46 @@ function playRound(playerChoice, computerChoice) {
 
 
 
-/* function game () {
+function game () {
     playerScore = 0;
     computerScore = 0;
+    let winner = document.querySelector(".winner");
+    let wins = document.querySelector('#wins');
+    let loses = document.querySelector('#loses');
 
-    for (let i = 0; i < 5; i++) {
+    buttons.forEach((button) => {
+
+        button.addEventListener('click', () => {
+          pChoice = button.id;
+          
+               
         if (playRound() === "You win!") {
             playerScore++;
+            wins.textContent = `Wins: ${playerScore}`;
         } else { 
             computerScore++;
-        }
-    }
+            loses.textContent = `Loses: ${computerScore}`;
+        } 
+        
 
-    if (playerScore > computerScore) {
-        return "You win the game with " + playerScore + " points!";
-    }
+        if (playerScore === 5) {
+            winner.textContent = "Congratulations you won the game!";
+            playerScore = 0;
+            computerScore = 0;
+            wins.textContent = `Wins: ${playerScore}`;
+            loses.textContent = `Loses: ${computerScore}`;
+        } else if (computerScore === 5) {
+            winner.textContent = "You lost. Better luck next time!";
+            playerScore = 0;
+            computerScore = 0;
+            wins.textContent = `Wins: ${playerScore}`;
+            loses.textContent = `Loses: ${computerScore}`;
+        }
+        
+        });
+      });
+
 }
 
-console.log(game()); */
+game();
+
